@@ -1,8 +1,53 @@
 /* You can add global styles to this file, and also import other style files */
 @import url('https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200');
+@import '../src/assets/scss/color.scss';
+@import '../src/assets/scss/font-size.scss';
+@import '../src/assets/scss/spacing.scss';
 
 body {
-    margin: 0px;
+  margin: 0px;
 }
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: 'Noto Sans', Roboto, 'Helvetica Neue', sans-serif;
+}
+
+input,
+select {
+  width: 100%;
+  display: inline-block;
+  border: 1px solid var(--color-n-night);
+  border-radius: var(--spacing-quarter);
+  box-sizing: border-box;
+  padding: 8px 2px;
+  margin: 8px 0;
+}
+
+input:hover,
+select:hover {
+  background-color: var(--color-n-hover);
+}
+
+input.ng-invalid.ng-touched,
+select.ng-invalid.ng-touched {
+  border-color: var(--color-fail);
+  color: var(--color-fail);
+  border-right: var(--spacing-quarter) solid var(--color-fail);
+}
+
+.ng-valid[required],
+.ng-valid.required,
+.ng-valid[pattern],
+.ng-valid.pattern {
+  border-right: var(--spacing-quarter) solid var(--color-success);
+}
+
+.material-symbols-outlined {
+  font-variation-settings: 'FILL' 0, 'wght' 800, 'GRAD' 0, 'opsz' 48;
+}

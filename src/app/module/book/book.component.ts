@@ -1,4 +1,9 @@
-import { ChangeDetectionStrategy, Component, ViewEncapsulation, OnInit } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  ViewEncapsulation,
+  OnInit,
+} from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { AuthorService } from 'src/app/services/author.service';
 
@@ -9,7 +14,7 @@ import { AuthorService } from 'src/app/services/author.service';
   changeDetection: ChangeDetectionStrategy.OnPush,
   encapsulation: ViewEncapsulation.None,
 })
-export class BookComponent implements OnInit{
+export class BookComponent implements OnInit {
   authors: any;
   createBookForm!: boolean;
   addBookText = true;
@@ -18,7 +23,10 @@ export class BookComponent implements OnInit{
   isEdit = false;
   editIndex = -1;
 
-  constructor(private formBuilder: FormBuilder, private authorService: AuthorService) { }
+  constructor(
+    private formBuilder: FormBuilder,
+    private authorService: AuthorService
+  ) {}
 
   ngOnInit() {
     this.authors = this.authorService.getAuthors();
@@ -36,9 +44,9 @@ export class BookComponent implements OnInit{
 
   bookForm = this.formBuilder.group({
     name: ['', Validators.required],
-    isbn: [],
-    author: ''
-  })
+    isbn: ['', Validators.pattern('^[0-9]*$')],
+    author: ['', Validators.required],
+  });
 
   saveBook() {
     if (this.isEdit) {

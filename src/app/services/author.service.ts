@@ -2,13 +2,10 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class AuthorService {
-
-  constructor(private http: HttpClient) {
-    console.log("service: ", this.authorsDetails)
-  }
+  constructor(private http: HttpClient) { }
   private authorsDetails: string[] = [];
 
   getAuthors(): string[] {
@@ -19,7 +16,7 @@ export class AuthorService {
     this.authorsDetails.push(author);
   }
 
-  deleteAuthor(index:any):void{
+  deleteAuthor(index: any): void {
     this.authorsDetails.splice(index, 1);
   }
 }

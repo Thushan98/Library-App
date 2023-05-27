@@ -1,43 +1,73 @@
 <div class="books">
-    <div class="books-container">
-        <div class="books-container__heading">
-            Books
-        </div>
-        <div class="books-container__no-book" *ngIf="bookData.length == 0">No books listed here</div>
-        <div class="books-container__list" *ngIf="bookData.length > 0">
-            <ng-container *ngFor="let book of bookData;let i =  index">
-                <div>{{i+1}}. {{book.name}}</div>
-                <div class="books-container__list--icon">
-                    <span class="material-symbols-outlined" (click)="updateBook(i)">edit_square</span>
-                    <span class="material-symbols-outlined" (click)="removeBook(i)">delete</span>
-                </div>
-            </ng-container>
-        </div>
-        <div class="books-container__add-book" *ngIf="addBookText" (click)="addBook()">
-            <span class="material-symbols-outlined">
-                add
-            </span>
-            <span class="books-container--position">add book</span>
-        </div>
-        <div class="books-container__form" *ngIf="createBookForm">
-            <div class="books-container__form--display">
-                <div class="books-container__form--create-font">create book</div>
-                <div class="material-symbols-outlined books-container--pointer" (click)="closeBookForm()">close</div>
-            </div>
-            <div>
-                <form [formGroup]="bookForm">
-                    <label for="nameInput">Name of the Book</label>
-                    <input type="text" id="nameInput" formControlName="name" required />
-                    <label for="isbnInput">ISBN</label>
-                    <input type="number" id="isbnInput" formControlName="isbn" />
-                    <label for="authorInput">Author</label>
-                    <select id="authorInput" formControlName="author">
-                        <option *ngFor="let auth of authors" value={{auth.name}}>{{ auth.name }}</option>
-                    </select>
-                </form>
-                <button mat-raised-button color="primary" class="books-container__button"
-                    (click)="saveBook()">{{ isEdit ? 'Update' : 'Create' }}</button>
-            </div>
-        </div>
+  <div class="books-container">
+    <div class="books-container__heading">Books</div>
+    <div class="books-container__no-book" *ngIf="bookData.length == 0">
+      No books listed here..
     </div>
+    <div class="books-container__list" *ngIf="bookData.length > 0">
+      <ng-container *ngFor="let book of bookData; let i = index">
+        <div>{{ i + 1 }}. {{ book.name }}</div>
+        <div class="books-container__list--icon">
+          <span class="material-symbols-outlined" (click)="updateBook(i)" matTooltip="Edit"
+            >edit_square</span
+          >
+          <span class="material-symbols-outlined" (click)="removeBook(i)" matTooltip="Delete"
+            >delete</span
+          >
+        </div>
+      </ng-container>
+    </div>
+    <div
+      class="books-container__add-book"
+      *ngIf="addBookText"
+      (click)="addBook()"
+    >
+      <span class="material-symbols-outlined"> add </span>
+      <span class="books-container--position">add book</span>
+    </div>
+    <div class="books-container__form" *ngIf="createBookForm">
+      <div class="books-container__form--display">
+        <div class="books-container__form--create-font">create book</div>
+        <div
+          class="material-symbols-outlined books-container--pointer"
+          (click)="closeBookForm()"
+          matTooltip="Close"
+        >
+          close
+        </div>
+      </div>
+      <div>
+        <form [formGroup]="bookForm">
+          <label for="nameInput">Name of the Book</label>
+          <input type="text" id="nameInput" formControlName="name" required />
+          <app-error-validation
+            [control]="bookForm.controls.name"
+          ></app-error-validation>
+          <label for="isbnInput">ISBN</label>
+          <input type="number" id="isbnInput" formControlName="isbn" />
+          <app-error-validation
+            [control]="bookForm.controls.isbn"
+          ></app-error-validation>
+          <label for="authorInput">Author</label>
+          <select id="authorInput" formControlName="author" required>
+            <option *ngFor="let auth of authors" value="{{ auth.name }}">
+              {{ auth.name }}
+            </option>
+          </select>
+          <app-error-validation
+            [control]="bookForm.controls.author"
+          ></app-error-validation>
+        </form>
+        <button
+          mat-raised-button
+          color="primary"
+          class="books-container__button"
+          (click)="saveBook()"
+          [disabled]="bookForm.invalid"
+        >
+          {{ isEdit ? 'Update' : 'Create' }}
+        </button>
+      </div>
+    </div>
+  </div>
 </div>

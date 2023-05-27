@@ -1,4 +1,8 @@
-import { ChangeDetectionStrategy, Component, ViewEncapsulation } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  ViewEncapsulation,
+} from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { AuthorService } from 'src/app/services/author.service';
 
@@ -10,8 +14,10 @@ import { AuthorService } from 'src/app/services/author.service';
   encapsulation: ViewEncapsulation.None,
 })
 export class AuthorComponent {
-
-  constructor(private formBuilder: FormBuilder, private authorService: AuthorService) { }
+  constructor(
+    private formBuilder: FormBuilder,
+    private authorService: AuthorService
+  ) { }
   createAuthorForm!: boolean;
   addAuthorText = true;
   authorData: any[] = [];
@@ -30,8 +36,8 @@ export class AuthorComponent {
   }
 
   authorForm = this.formBuilder.group({
-    name: ['', Validators.required]
-  })
+    name: ['', Validators.required],
+  });
 
   saveAuthor() {
     if (this.isEdit) {
@@ -43,7 +49,6 @@ export class AuthorComponent {
       this.authorData.push(this.authorForm.value);
       this.authorService.addAuthor(this.authorForm.value);
     }
-    console.log(this.authorForm.value);
     this.authorForm.reset();
   }
 

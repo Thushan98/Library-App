@@ -10,12 +10,17 @@ import { AuthorComponent } from './module/author/author.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
 import { AuthorService } from './services/author.service';
+import { MatTooltipModule } from '@angular/material/tooltip';
+import { ErrorValidationComponent } from './components/error-validation/error-validation.component';
+import { FooterComponent } from './components/footer/footer.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     BookComponent,
-    AuthorComponent
+    AuthorComponent,
+    ErrorValidationComponent,
+    FooterComponent,
   ],
   imports: [
     BrowserModule,
@@ -24,9 +29,10 @@ import { AuthorService } from './services/author.service';
     MatButtonModule,
     ReactiveFormsModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    MatTooltipModule,
   ],
   providers: [AuthorService],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
