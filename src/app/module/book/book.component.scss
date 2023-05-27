@@ -1,0 +1,90 @@
+.books {
+    padding: 0 16px;
+
+    &-container {
+        &__heading {
+            border-bottom: 2px solid;
+            font-size: 32px;
+            padding: 5px 0;
+        }
+
+        &__no-book {
+            font-size: large;
+            margin: 10px 0;
+        }
+
+        &__add-book {
+            display: flex;
+            cursor: pointer;
+            width: fit-content;
+        }
+
+        &--position {
+            margin-top: 1px;
+            font-size: 20px;
+        }
+
+        &__form {
+            width: 75%;
+
+            &--create-font {
+                font-size: 20px;
+                margin-bottom: 10px;
+            }
+
+            &--display {
+                display: flex;
+                justify-content: space-between;
+            }
+
+            @media only screen and (max-width: 720px) {
+                width: 100%;
+            }
+        }
+
+        &__button {
+            float: right;
+            margin: 10px 0;
+            cursor: pointer;
+        }
+
+        &--pointer {
+            cursor: pointer;
+        }
+
+        &__list {
+            width: 100%;
+            text-align: left;
+            padding: 5px 0;
+            margin: 20px 0;
+            display: grid;
+            grid-template-columns: 4fr 1fr;
+            font-size: large;
+
+            &--icon {
+                display: grid;
+                grid-template-columns: 2fr 2fr;
+                cursor: pointer;
+            }
+        }
+    }
+}
+
+input,
+select {
+    width: 100%;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    padding: 8px 2px;
+    margin: 8px 0;
+}
+
+.material-symbols-outlined {
+    font-variation-settings:
+        'FILL' 0,
+        'wght' 800,
+        'GRAD' 0,
+        'opsz' 48
+}

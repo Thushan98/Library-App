@@ -1,0 +1,37 @@
+<div class="authors">
+    <div class="authors-container">
+        <div class="authors-container__heading">
+            authors
+        </div>
+        <div class="authors-container__no-author" *ngIf="authorData.length == 0">No authors listed here</div>
+        <div class="authors-container__list" *ngIf="authorData.length > 0">
+            <ng-container *ngFor="let author of authorData;let i =  index">
+                <div>{{i+1}}. {{author.name}}</div>
+                <div class="authors-container__list--icon">
+                    <span class="material-symbols-outlined" (click)="updateAuthor(i)">edit_square</span>
+                    <span class="material-symbols-outlined" (click)="removeAuthor(i)">delete</span>
+                </div>
+            </ng-container>
+        </div>
+        <div class="authors-container__add-author" *ngIf="addAuthorText" (click)="addAuthor()">
+            <span class="material-symbols-outlined">
+                add
+            </span>
+            <span class="authors-container--position">add author</span>
+        </div>
+        <div class="authors-container__form" *ngIf="createAuthorForm">
+            <div class="authors-container__form--display">
+                <div class="authors-container__form--create-font">create author</div>
+                <div class="material-symbols-outlined authors-container--pointer" (click)="closeAuthorForm()">close</div>
+            </div>
+            <div>
+                <form [formGroup]="authorForm">
+                    <label for="nameInput">Name of the Author</label>
+                    <input type="text" id="nameInput" formControlName="name" required />
+                </form>
+                <button mat-raised-button color="primary" class="authors-container__button"
+                    (click)="saveAuthor()">{{ isEdit ? 'Update' : 'Create' }}</button>
+            </div>
+        </div>
+    </div>
+</div>
