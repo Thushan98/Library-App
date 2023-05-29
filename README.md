@@ -1,9 +1,11 @@
 # LibraryApp
-Logan Library Application is a web-based application that help to manage the library book adding and updating process. It is well user-friendly which is built using Angular. I used Angular, SCSS with BEM rules and angular materials as tech stack.
+Logan Library Application(https://thushan98.github.io/Library-App/) is a web-based application that help to manage the library book adding and updating process. It is well user-friendly which is built using Angular. I used Angular, SCSS with BEM rules and angular materials as tech stack.
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.0.2.
 
 ## Development server
+
+Project deployed on 'https://thushan98.github.io/Library-App/' 
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
 
