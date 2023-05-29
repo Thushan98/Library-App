@@ -8,31 +8,19 @@
       <ng-container *ngFor="let book of bookData; let i = index">
         <div>{{ i + 1 }}. {{ book.name }}</div>
         <div class="books-container__list--icon">
-          <span class="material-symbols-outlined" (click)="updateBook(i)" matTooltip="Edit"
-            >edit_square</span
-          >
-          <span class="material-symbols-outlined" (click)="removeBook(i)" matTooltip="Delete"
-            >delete</span
-          >
+          <span class="material-symbols-outlined" (click)="updateBook(i)" matTooltip="Edit">edit_square</span>
+          <span class="material-symbols-outlined" (click)="removeBook(i)" matTooltip="Delete">delete</span>
         </div>
       </ng-container>
     </div>
-    <div
-      class="books-container__add-book"
-      *ngIf="addBookText"
-      (click)="addBook()"
-    >
+    <div class="books-container__add-book" *ngIf="addBookText" (click)="addBook()">
       <span class="material-symbols-outlined"> add </span>
       <span class="books-container--position">add book</span>
     </div>
     <div class="books-container__form" *ngIf="createBookForm">
       <div class="books-container__form--display">
         <div class="books-container__form--create-font">create book</div>
-        <div
-          class="material-symbols-outlined books-container--pointer"
-          (click)="closeBookForm()"
-          matTooltip="Close"
-        >
+        <div class="material-symbols-outlined books-container--pointer" (click)="closeBookForm()" matTooltip="Close">
           close
         </div>
       </div>
@@ -40,31 +28,20 @@
         <form [formGroup]="bookForm">
           <label for="nameInput">Name of the Book</label>
           <input type="text" id="nameInput" formControlName="name" required />
-          <app-error-validation
-            [control]="bookForm.controls.name"
-          ></app-error-validation>
+          <app-error-validation [control]="bookForm.controls.name"></app-error-validation>
           <label for="isbnInput">ISBN</label>
           <input type="number" id="isbnInput" formControlName="isbn" />
-          <app-error-validation
-            [control]="bookForm.controls.isbn"
-          ></app-error-validation>
+          <app-error-validation [control]="bookForm.controls.isbn"></app-error-validation>
           <label for="authorInput">Author</label>
           <select id="authorInput" formControlName="author" required>
             <option *ngFor="let auth of authors" value="{{ auth.name }}">
               {{ auth.name }}
             </option>
           </select>
-          <app-error-validation
-            [control]="bookForm.controls.author"
-          ></app-error-validation>
+          <app-error-validation [control]="bookForm.controls.author"></app-error-validation>
         </form>
-        <button
-          mat-raised-button
-          color="primary"
-          class="books-container__button"
-          (click)="saveBook()"
-          [disabled]="bookForm.invalid"
-        >
+        <button mat-raised-button color="primary" class="books-container__button" (click)="saveBook()"
+          [disabled]="bookForm.invalid" (click)="openSnackBar()">
           {{ isEdit ? 'Update' : 'Create' }}
         </button>
       </div>

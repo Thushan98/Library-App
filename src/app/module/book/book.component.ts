@@ -6,6 +6,7 @@ import {
 } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { AuthorService } from 'src/app/services/author.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-book',
@@ -25,8 +26,9 @@ export class BookComponent implements OnInit {
 
   constructor(
     private formBuilder: FormBuilder,
-    private authorService: AuthorService
-  ) {}
+    private authorService: AuthorService,
+    private snackBar: MatSnackBar
+  ) { }
 
   ngOnInit() {
     this.authors = this.authorService.getAuthors();
@@ -67,5 +69,9 @@ export class BookComponent implements OnInit {
 
   removeBook(index: number) {
     this.bookData.splice(index, 1);
+  }
+
+  openSnackBar() {
+    this.snackBar.open("Book Added Successfully", "", { duration: 2000 });
   }
 }

@@ -4,6 +4,7 @@ import {
   ViewEncapsulation,
 } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { AuthorService } from 'src/app/services/author.service';
 
 @Component({
@@ -16,8 +17,10 @@ import { AuthorService } from 'src/app/services/author.service';
 export class AuthorComponent {
   constructor(
     private formBuilder: FormBuilder,
-    private authorService: AuthorService
+    private authorService: AuthorService,
+    private snackBar: MatSnackBar
   ) { }
+
   createAuthorForm!: boolean;
   addAuthorText = true;
   authorData: any[] = [];
@@ -61,5 +64,9 @@ export class AuthorComponent {
   removeAuthor(index: number) {
     this.authorData.splice(index, 1);
     this.authorService.deleteAuthor(index);
+  }
+
+  openSnackBar() {
+    this.snackBar.open("Author Added Successfully", "", {duration:2000});
   }
 }

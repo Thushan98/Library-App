@@ -50,6 +50,7 @@
           class="authors-container__button"
           (click)="saveAuthor()"
           [disabled]="authorForm.invalid"
+          (click)="openSnackBar()"
         >
           {{ isEdit ? 'Update' : 'Create' }}
         </button>
